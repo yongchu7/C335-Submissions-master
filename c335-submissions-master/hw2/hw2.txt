@@ -1,0 +1,257 @@
+4.1
+ (d_N-1, d_N-2, d_N-3, ......, d_0)r = Sum(i=0 -> i= N-1) (r-1)*r^i
+                                       = (r-1)r^N-1 + (r-1)r^N-2 +...+(r-1)^1 + (r-1)r^0
+                                       =r^N - r^N-1 + r^N-1 - r^N-2 + r^N-2 +...- r + r -r^0
+                                       =r^N-1
+4.2
+In each digit position, if two numbers add together >=r, we carry 1 to preceeding position, if not we carry 0.
+
+4.3
+  small:   (b_N-1, .....b_0)_2
+            b_N-1 = 1
+                    b_(N-2 ,...,0) = 0
+
+                    -1* 2^(N-1) + summation(i=0 to N-2) 0*2^i
+                    = -2^(N-1)
+
+  large:   (b_N-1, .....b_0)_2
+            b_N-1 = 0
+                    b_(N-2 ,...,0) = 1
+
+                    -0* 2^(N-1) + summation(i=0 to N-2) 1*2^i
+                    = 2^(N-1) -1
+					
+4.4
+     --------------
+     (b_N-1....b_0)_2 +1
+
+     = Sum(i=0 to i= N-1) (r-1- b_i)*r^i +1
+
+     = Sum(i=0 to i= N-1) (r-1)*r^i +1 - Sum(i=0 to i= N-1)bi*r^i
+
+     = (r^N)-1+1 - Sum(i=0 to i= N-1) bi*r^i
+
+     = r^N - Sum(i=0 to i= N-1) bi*r^i
+
+     discard r^N.
+
+     - Sum(i=0 to i= N-1) bi*r^i = -(b_N-1..b_0)_2
+4.5
+For example, 8-bit encoding of decimal number -17 can be sign-extended as follows:
+
+                               11101111 <- 8-bit value of -17
+                      11111111 11101111  <- extended to 16-bit value
+    11111111 11111111 11111111 11101111  <- extended 32-bit value
+The leading zeroes which do not affect values means a positive numbers and leading 1s whcih do not affect values means a negative numbers.
+
+6.
+111(10)
+1101111(2)
+
+111/2 = 55 remainder = 1
+55/2 = 27 remainder = 1
+27/2 = 13 remainder = 1
+13/2 = 6 remainder = 1
+6/2 = 3 remainder = 0
+3/2 = 1 remainder = 1
+1/2 remainder = 1
+
+2137(10)
+100001011001(2)
+
+2137/2 = 1068 remainder = 1
+1068/2 = 534 remainder = 0
+534/2 = 267 remainder = 0
+267/2 = 133 remainder = 1
+133/2 = 66 remainder = 1
+66/2 = 33 remainder = 0
+33/2 = 16 remainder = 1
+16/2 = 8 remainder = 0
+8/2 = 4 remainder = 0 
+4/2 = 2 remainder = 0
+2/2 = 1 remainder = 0
+1/2 remainder = 1
+
+32333(10)
+111111001001101(2)
+
+32333/2 = 16166 remainder = 1
+16166/2 = 8083 remainder = 0
+8083/2 = 4041 remainder = 1 
+4041/2 = 2020 remainder = 1
+2020/2 = 1010 remainder = 0
+1010/2 = 505 remainder = 0
+505/2 = 252 remainder = 1
+252/2 = 126 remainder = 0
+126/2 = 63 remainder = 0
+63/2 = 31 remainder = 1
+31/2 = 15 remainder = 1
+15/2 = 7 remainder = 1
+7/2 = 3 remainder = 1
+3/2 = 1 remainder = 1
+1/2 remainder = 1
+
+93(10)
+1011101(2)
+
+93/2 = 46 remainder = 1
+46/2 = 23 remainder = 0
+23/2 = 11 remainder = 1
+11/2 = 5 remainder = 1
+5/2 = 2 remainder = 1
+2/2 = 1 remainder = 0
+1/2 remainder = 1
+
+7.
+ 111
+- 31
+----
+ 111
++968
++  1
+----
+  80
+ 
+111:
+1101111
+
+31:
+11111
+
+ 1101111
+-  11111
+--------
+1101111 (carry bits)
+ 1101111
++1100000
++      1
+--------
+ 1010000
+
+ 1021
+-  55
+-----
+ 1021
++9944
++   1
+-----
+  966
+  
+1021:
+1111111101
+55:
+110111
+
+ 1111111101
+-    110111
+-----------
+1111111001(carry bits)
+ 1111111101
++1111001000
++         1
+-----------
+ 1111000110
+
+ 156
+- 99
+----
+ 156
++900
++  1
+----
+  57
+  
+156:
+10011100
+99:
+1100011
+
+ 10011100
+- 1100011
+---------
+10011100(carry bits)
+ 10011100
++10011100
++       1
+---------
+   111001
+   
+ 2122
+- 122
+-----
+ 2122
++9877
++   1
+-----
+ 2000
+  
+2122:
+100001001010
+
+122:
+1111010
+
+ 100001001010
+-     1111010
+-------------
+100000001111(carry bits)
+ 100001001010
++111110000101
++           1
+-------------
+  11111010000
+ 
+8.
+-111
+1101111
+
+111/2 = 55 remainder = 1
+55/2 = 27 remainder = 1
+27/2 = 13 remainder = 1
+13/2 = 6 remainder = 1
+6/2 = 3 remainder = 0
+3/2 = 1 remainder = 1
+1/2 remainder = 1
+-(01101111) = 10010000 + 1 = 10010001
+
+-31
+11111
+31/2 = 15 remainder = 1
+15/2 = 7 remainder = 1
+7/2 =3 remainder = 1
+3/2 =1 remainder = 1
+1/2 remainder = 1
+-(00011111) = 11100000 + 1 = 11100001
+
+
+-124
+1111100
+124/2 = 62 remainder = 0
+62/2 =31 remainder = 0
+31/2 = 15 remainder = 1
+15/2 =7 remainder = 1
+7/2 =3 remainder = 1
+3/2 =1 remainder = 1
+1/2 remainder = 1
+-(01111100) = 10000011 + 1 = 10000100
+
+125
+01111101
+125/2 =62 remainder = 1
+62/2 =31 remainder = 0
+31/2 = 15 remainder = 1
+15/2 =7 remainder = 1
+7/2 = 3 remainder = 1
+3/2 =1 remainder = 1
+1/2 remainder = 1
+then add 0 on the position 7
+
+63
+00111111
+63/2 = 31 remainder = 1
+31/2 = 15 remainder = 1
+15/2 =7 remainder = 1
+7/2 =3 remainder = 1
+3/2 =1 remainder = 1
+1/2 remainder = 1
+then add 0 on the position 7 followed with 0

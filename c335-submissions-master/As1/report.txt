@@ -1,0 +1,6 @@
+Address and size of global variable state :00012fe8 00000004 b state
+Address and size of global variable state_counter:00012fec 00000004 b state_counter.4968
+Starting address and size of function stop_light():00008af8 00000090 T stop_light
+Starting address and size of function inc():00008ba0 T inc ;4 bytes
+Largest function in the executable HW1.elf:_malloc_r
+Overall size of the executable HW1.elf in bytes:60307
